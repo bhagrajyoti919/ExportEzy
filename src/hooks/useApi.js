@@ -85,10 +85,10 @@ export const useApi = (url, options = {}) => {
       
       if (url === '/api/dashboard/stats') {
         return {
-          activeShipments: 24,
+          activeShipments: 32,
           lowStockItems: 8,
           totalClients: 6,
-          deliveredThisMonth: 156
+          deliveredThisMonth: 184
         };
       }
       
@@ -215,6 +215,189 @@ export const useApi = (url, options = {}) => {
             "priority": "High",
             "progress": 75,
             "description": "High-tech electronic components"
+          },
+          {
+            "id": 9,
+            "trackingNumber": "SH-2024-009",
+            "client": "Nordic Supplies",
+            "origin": "Portland, USA",
+            "destination": "Stockholm, Sweden",
+            "status": "Delivered",
+            "estimatedDelivery": "2024-09-30",
+            "actualDelivery": "2024-09-29",
+            "carrier": "Scandinavian Airlines Cargo",
+            "weight": "680 kg",
+            "value": "$22,500",
+            "priority": "Medium",
+            "progress": 100,
+            "description": "Food processing equipment"
+          },
+          {
+            "id": 10,
+            "trackingNumber": "SH-2024-010",
+            "client": "TechSolutions Ltd",
+            "origin": "Seattle, USA",
+            "destination": "Toronto, Canada",
+            "status": "Preparing",
+            "estimatedDelivery": "2024-10-05",
+            "carrier": "Ground Transport",
+            "weight": "320 kg",
+            "value": "$18,500",
+            "priority": "Low",
+            "progress": 15,
+            "description": "Computer hardware and accessories"
+          },
+          {
+            "id": 11,
+            "trackingNumber": "SH-2024-011",
+            "client": "Fashion Forward",
+            "origin": "Miami, USA",
+            "destination": "Milan, Italy",
+            "status": "In Transit",
+            "estimatedDelivery": "2024-10-01",
+            "carrier": "Alitalia Cargo",
+            "weight": "450 kg",
+            "value": "$35,000",
+            "priority": "High",
+            "progress": 60,
+            "description": "Luxury fashion items and accessories"
+          },
+          {
+            "id": 12,
+            "trackingNumber": "SH-2024-012",
+            "client": "HealthCare Plus",
+            "origin": "Chicago, USA",
+            "destination": "Tokyo, Japan",
+            "status": "Customs Hold",
+            "estimatedDelivery": "2024-10-03",
+            "carrier": "Japan Airlines Cargo",
+            "weight": "280 kg",
+            "value": "$42,000",
+            "priority": "High",
+            "progress": 40,
+            "description": "Medical devices and pharmaceuticals"
+          },
+          {
+            "id": 13,
+            "trackingNumber": "SH-2024-013",
+            "client": "AutoParts Direct",
+            "origin": "Detroit, USA",
+            "destination": "Mexico City, Mexico",
+            "status": "Delivered",
+            "estimatedDelivery": "2024-09-28",
+            "actualDelivery": "2024-09-27",
+            "carrier": "Ground Transport",
+            "weight": "1,200 kg",
+            "value": "$28,500",
+            "priority": "Medium",
+            "progress": 100,
+            "description": "Automotive replacement parts"
+          },
+          {
+            "id": 14,
+            "trackingNumber": "SH-2024-014",
+            "client": "Green Energy Corp",
+            "origin": "Houston, USA",
+            "destination": "Berlin, Germany",
+            "status": "In Transit",
+            "estimatedDelivery": "2024-10-07",
+            "carrier": "Lufthansa Cargo",
+            "weight": "800 kg",
+            "value": "$55,000",
+            "priority": "High",
+            "progress": 70,
+            "description": "Solar panels and renewable energy equipment"
+          },
+          {
+            "id": 15,
+            "trackingNumber": "SH-2024-015",
+            "client": "FoodEx International",
+            "origin": "Los Angeles, USA",
+            "destination": "Dubai, UAE",
+            "status": "Preparing",
+            "estimatedDelivery": "2024-10-10",
+            "carrier": "Emirates SkyCargo",
+            "weight": "950 kg",
+            "value": "$12,500",
+            "priority": "Medium",
+            "progress": 25,
+            "description": "Organic food products and supplements"
+          },
+          {
+            "id": 16,
+            "trackingNumber": "SH-2024-016",
+            "client": "Sports Equipment Co",
+            "origin": "Denver, USA",
+            "destination": "Melbourne, Australia",
+            "status": "In Transit",
+            "estimatedDelivery": "2024-10-08",
+            "carrier": "Qantas Freight",
+            "weight": "650 kg",
+            "value": "$19,800",
+            "priority": "Medium",
+            "progress": 55,
+            "description": "Professional sports equipment and gear"
+          },
+          {
+            "id": 17,
+            "trackingNumber": "SH-2024-017",
+            "client": "Beauty Essentials",
+            "origin": "New York, USA",
+            "destination": "Paris, France",
+            "status": "Delivered",
+            "estimatedDelivery": "2024-09-25",
+            "actualDelivery": "2024-09-24",
+            "carrier": "Air France Cargo",
+            "weight": "180 kg",
+            "value": "$24,000",
+            "priority": "High",
+            "progress": 100,
+            "description": "Luxury cosmetics and beauty products"
+          },
+          {
+            "id": 18,
+            "trackingNumber": "SH-2024-018",
+            "client": "Industrial Solutions",
+            "origin": "Pittsburgh, USA",
+            "destination": "Mumbai, India",
+            "status": "Customs Hold",
+            "estimatedDelivery": "2024-10-12",
+            "carrier": "Air India Cargo",
+            "weight": "1,500 kg",
+            "value": "$67,500",
+            "priority": "High",
+            "progress": 35,
+            "description": "Heavy machinery and industrial equipment"
+          },
+          {
+            "id": 19,
+            "trackingNumber": "SH-2024-019",
+            "client": "Pet Care Plus",
+            "origin": "Austin, USA",
+            "destination": "Vancouver, Canada",
+            "status": "In Transit",
+            "estimatedDelivery": "2024-10-02",
+            "carrier": "Ground Transport",
+            "weight": "320 kg",
+            "value": "$8,900",
+            "priority": "Low",
+            "progress": 80,
+            "description": "Pet supplies and veterinary equipment"
+          },
+          {
+            "id": 20,
+            "trackingNumber": "SH-2024-020",
+            "client": "Home Decor Ltd",
+            "origin": "Phoenix, USA",
+            "destination": "Barcelona, Spain",
+            "status": "Preparing",
+            "estimatedDelivery": "2024-10-15",
+            "carrier": "Iberia Cargo",
+            "weight": "720 kg",
+            "value": "$31,200",
+            "priority": "Medium",
+            "progress": 20,
+            "description": "Home decoration items and furniture"
           }
         ];
       }
@@ -345,7 +528,9 @@ export const useApi = (url, options = {}) => {
     const loadData = () => {
       setLoading(true);
       timeoutId = setTimeout(() => {
-        setData(mockData());
+        const result = mockData();
+        console.log(`[useApi] Loading data for ${url}:`, result);
+        setData(result);
         setLoading(false);
       }, 500);
     };

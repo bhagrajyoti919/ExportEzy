@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApi } from '../hooks/useApi';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/Card';
+import AddItemModal from '../components/AddItemModal';
 import { 
   Warehouse, 
   Search, 
@@ -20,9 +21,35 @@ const Inventory = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [stockFilter, setStockFilter] = useState('');
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [localInventory, setLocalInventory] = useState([]);
   const { data: inventory, loading } = useApi('/api/inventory');
 
-  const filteredInventory = inventory?.filter(item => {
+  // Load saved inventory from localStorage on component mount
+  useEffect(() => {
+    const savedInventory = localStorage.getItem('exportezy_inventory');
+    if (savedInventory) {
+      try {
+        const parsedInventory = JSON.parse(savedInventory);
+        setLocalInventory(parsedInventory);
+      } catch (error) {
+        console.error('Error parsing saved inventory:', error);
+        setLocalInventory([]);
+      }
+    }
+  }, []);
+
+  // Save inventory to localStorage whenever localInventory changes
+  useEffect(() => {
+    if (localInventory.length > 0) {
+      localStorage.setItem('exportezy_inventory', JSON.stringify(localInventory));
+    }
+  }, [localInventory]);
+
+  // Combine API data with local inventory
+  const allInventory = [...(inventory || []), ...localInventory];
+  
+  const filteredInventory = allInventory?.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -36,13 +63,31 @@ const Inventory = () => {
     return matchesSearch && matchesCategory && matchesStock;
   }) || [];
 
-  const categories = [...new Set(inventory?.map(item => item.category) || [])];
-  const lowStockCount = inventory?.filter(item => item.stockLevel < 50).length || 0;
-  const totalValue = inventory?.reduce((sum, item) => {
+  const categories = [...new Set(allInventory?.map(item => item.category) || [])];
+  const lowStockCount = allInventory?.filter(item => item.stockLevel < 50).length || 0;
+  const totalValue = allInventory?.reduce((sum, item) => {
     const raw = (item && item.value) ? item.value : 0;
     const value = typeof raw === 'string' ? parseFloat(raw.replace(/[^0-9.-]+/g, '')) : (raw || 0);
     return sum + value;
   }, 0) || 0;
+
+  const handleAddItem = (newItem) => {
+    const updatedInventory = [...localInventory, newItem];
+    setLocalInventory(updatedInventory);
+    
+    // Save to localStorage immediately
+    localStorage.setItem('exportezy_inventory', JSON.stringify(updatedInventory));
+    
+    // Show success message
+    console.log('Item added successfully:', newItem.name);
+  };
+
+  // Function to clear saved inventory (for testing purposes)
+  const clearSavedInventory = () => {
+    localStorage.removeItem('exportezy_inventory');
+    setLocalInventory([]);
+    console.log('Saved inventory cleared');
+  };
 
   const getStockStatus = (level) => {
     if (level < 50) return { status: 'Low', color: 'red', icon: AlertTriangle };
@@ -98,9 +143,24 @@ const Inventory = () => {
     <div className="p-4 lg:p-6 max-w-7xl mx-auto">
       {/* Header */}
       <div className="mb-6">
-        <h1 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-2">
-          Inventory Management
-        </h1>
+        <div className="flex justify-between items-center mb-2">
+          <h1 className="text-2xl lg:text-3xl font-bold text-gray-900">
+            Inventory Management
+          </h1>
+          <div className="flex items-center space-x-2">
+            <span className="text-sm text-gray-500">
+              Saved Items: {localInventory.length}
+            </span>
+            {localInventory.length > 0 && (
+              <button
+                onClick={clearSavedInventory}
+                className="px-2 py-1 text-xs text-red-600 bg-red-50 rounded hover:bg-red-100 transition-colors"
+              >
+                Clear Saved
+              </button>
+            )}
+          </div>
+        </div>
         <p className="text-gray-600">
           Monitor stock levels and manage your warehouse inventory
         </p>
@@ -341,7 +401,10 @@ const Inventory = () => {
                 <TrendingUp className="w-8 h-8 mx-auto mb-2 text-blue-600 group-hover:scale-110 transition-transform" />
                 <p className="text-sm font-medium text-blue-700">Stock Report</p>
               </button>
-              <button className="p-4 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 transition-colors text-center group">
+              <button 
+                onClick={() => setIsAddModalOpen(true)}
+                className="p-4 bg-green-50 border border-green-200 rounded-xl hover:bg-green-100 transition-colors text-center group cursor-pointer"
+              >
                 <Package className="w-8 h-8 mx-auto mb-2 text-green-600 group-hover:scale-110 transition-transform" />
                 <p className="text-sm font-medium text-green-700">Add New Item</p>
               </button>
@@ -353,6 +416,13 @@ const Inventory = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* Add Item Modal */}
+      <AddItemModal 
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onAddItem={handleAddItem}
+      />
     </div>
   );
 };

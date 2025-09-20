@@ -22,6 +22,8 @@ const Shipments = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const { data: shipments, loading } = useApi('/api/shipments');
+  
+  console.log('Shipments component - data:', shipments, 'loading:', loading);
 
   const filteredShipments = shipments?.filter(shipment => {
     const matchesSearch = shipment.trackingNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -66,6 +68,19 @@ const Shipments = () => {
           {[...Array(5)].map((_, i) => (
             <div key={i} className="h-32 bg-gray-200 rounded"></div>
           ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Debug: Show data status
+  if (!loading && !shipments) {
+    return (
+      <div className="p-4 lg:p-6 max-w-7xl mx-auto">
+        <div className="text-center">
+          <h2 className="text-xl font-bold text-red-600">No Shipments Data</h2>
+          <p className="text-gray-600">Shipments data is null or undefined</p>
+          <p className="text-sm text-gray-500">Loading: {loading.toString()}, Data: {shipments ? 'exists' : 'null'}</p>
         </div>
       </div>
     );
