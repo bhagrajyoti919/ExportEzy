@@ -1,13 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 export const useApi = (url, options = {}) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    // Return mock data directly for debugging
-    const mockData = () => {
+  const mockData = useCallback(() => {
       if (url === '/api/clients') {
         return [
           {
@@ -339,27 +337,40 @@ export const useApi = (url, options = {}) => {
       }
       
       return [];
+    }, [url]);
+
+  useEffect(() => {
+    let timeoutId;
+    
+    const loadData = () => {
+      setLoading(true);
+      timeoutId = setTimeout(() => {
+        setData(mockData());
+        setLoading(false);
+      }, 500);
     };
 
-    setTimeout(() => {
-      setData(mockData());
-      setLoading(false);
-    }, 500);
-  }, [url, JSON.stringify(options)]);
+    loadData();
 
-  return { data, loading, error, refetch: () => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch(url, options);
-        const result = await response.json();
-        setData(result);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
     };
-    fetchData();
-  }};
+  }, [mockData]);
+
+  const refetch = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await fetch(url, options);
+      const result = await response.json();
+      setData(result);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }, [url, options]);
+
+  return { data, loading, error, refetch };
 };

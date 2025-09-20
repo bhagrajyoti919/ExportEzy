@@ -21,9 +21,6 @@ const Inventory = () => {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [stockFilter, setStockFilter] = useState('');
   const { data: inventory, loading } = useApi('/api/inventory');
-  // Debug logs to trace data and render state
-  console.log('[Inventory] loading:', loading);
-  console.log('[Inventory] data:', inventory);
 
   const filteredInventory = inventory?.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

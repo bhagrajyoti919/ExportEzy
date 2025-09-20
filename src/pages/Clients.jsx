@@ -19,13 +19,10 @@ import {
 } from 'lucide-react';
 
 const Clients = () => {
-  console.log('Clients component rendering...');
   const [searchTerm, setSearchTerm] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
   const [countryFilter, setCountryFilter] = useState('');
   const { data: clients, loading, error } = useApi('/api/clients');
-  
-  console.log('Clients data:', clients, 'Loading:', loading, 'Error:', error);
 
   const filteredClients = clients?.filter(client => {
     const matchesSearch = client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

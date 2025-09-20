@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import ProfileModal from './ProfileModal';
-import NotificationModal from './NotificationModal';
+import { useAuth } from '../../contexts/AuthContext';
+import ProfileModal from '../ProfileModal';
+import NotificationModal from '../NotificationModal';
+import { NAVIGATION_ITEMS } from '../../config/constants';
 import { 
-  Home, 
   Package, 
-  Warehouse, 
-  Users, 
   Menu,
   Bell,
   User,
@@ -40,15 +38,15 @@ const Layout = ({ children }) => {
     };
   });
 
-  const handleUpdateUser = (updatedProfile) => {
+  const handleUpdateUser = useCallback((updatedProfile) => {
     setMockUser({
       name: updatedProfile.name,
       role: updatedProfile.role,
       avatar: updatedProfile.avatar
     });
-  };
+  }, []);
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     const confirmLogout = window.confirm('Are you sure you want to logout?');
     
     if (confirmLogout) {
@@ -64,19 +62,11 @@ const Layout = ({ children }) => {
       // Navigate to login page
       navigate('/login');
     }
-  };
+  }, [logout, navigate]);
 
-  const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: Home },
-    { name: 'Shipments', href: '/shipments', icon: Package },
-    { name: 'Inventory', href: '/inventory', icon: Warehouse },
-    { name: 'Clients', href: '/clients', icon: Users },
-  ];
-
-  const handleNavClick = (href) => {
-    console.log('Navigation clicked:', href);
+  const handleNavClick = useCallback((href) => {
     setSidebarOpen(false);
-  };
+  }, []);
 
   return (
     <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f9fafb' }}>
@@ -114,15 +104,14 @@ const Layout = ({ children }) => {
 
         {/* Navigation */}
         <nav style={{ padding: '24px 12px', flex: 1 }}>
-          {navigation.map((item) => {
-            const Icon = item.icon;
-            const isActive = location.pathname === item.href;
+          {NAVIGATION_ITEMS.map((item) => {
+            const isActive = location.pathname === item.path;
             
             return (
               <Link
                 key={item.name}
-                to={item.href}
-                onClick={() => handleNavClick(item.href)}
+                to={item.path}
+                onClick={() => handleNavClick(item.path)}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -148,7 +137,7 @@ const Layout = ({ children }) => {
                   }
                 }}
               >
-                <Icon style={{ 
+                <Package style={{ 
                   width: '20px', 
                   height: '20px', 
                   marginRight: '12px',
