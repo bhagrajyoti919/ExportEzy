@@ -1,0 +1,75 @@
+/* Hide all debugging and development tools */
+
+/* React DevTools */
+.__react-devtools-container,
+.__react-devtools-portal-container,
+.react-dev-overlay,
+.__react-error-overlay,
+#react-devtools-container {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Vite HMR and error overlays */
+vite-error-overlay,
+vite-dev-overlay,
+.vite-error-overlay,
+.vite-dev-overlay {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Browser DevTools elements */
+iframe[src*="devtools"],
+iframe[src*="chrome-devtools"],
+iframe[name*="devtools"] {
+  display: none !important;
+}
+
+/* Any floating debug panels */
+div[style*="position: fixed"][style*="bottom: 0"][style*="right: 0"],
+div[style*="position: fixed"][style*="bottom:0"][style*="right:0"],
+div[data-testid*="debug"],
+div[class*="debug-panel"],
+div[class*="console-panel"],
+div[id*="debug"],
+div[id*="console"] {
+  display: none !important;
+}
+
+/* Hide any elements with debug-related attributes */
+[data-debug],
+[data-console],
+[data-devtools],
+.debug,
+.console,
+.devtools {
+  display: none !important;
+}
+
+/* Hide React error boundaries in development */
+div[data-reactroot] + div:last-child:not([class]):not([id]) {
+  display: none !important;
+}
+
+/* Hide any overlay with high z-index that might be debugging tools */
+div[style*="z-index: 999"],
+div[style*="z-index: 9999"],
+div[style*="z-index: 99999"] {
+  display: none !important;
+}
+
+/* Specific selectors for common debugging tools */
+.react-transform-hmr-reload,
+.webpack-dev-server-client,
+.__webpack_hmr {
+  display: none !important;
+}
+
+/* Hide any elements that might be console outputs */
+pre[style*="position: fixed"],
+code[style*="position: fixed"] {
+  display: none !important;
+}

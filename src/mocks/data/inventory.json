@@ -1,0 +1,91 @@
+[
+    {
+      "id": 1,
+      "name": "Electronic Components",
+      "description": "Semiconductors, processors, and circuit boards",
+      "stockLevel": 1250,
+      "location": "Mumbai Warehouse A",
+      "category": "Electronics",
+      "value": "₹2,50,000",
+      "supplier": "TechSupply India",
+      "lastUpdated": "2024-09-15"
+    },
+    {
+      "id": 2,
+      "name": "Organic Cotton Textiles",
+      "description": "Premium organic cotton fabrics and garments",
+      "stockLevel": 25,
+      "location": "Chennai Warehouse B",
+      "category": "Textiles",
+      "value": "₹75,000",
+      "supplier": "Cotton Mills Ltd",
+      "lastUpdated": "2024-09-18"
+    },
+    {
+      "id": 3,
+      "name": "Turmeric Powder",
+      "description": "High-quality organic turmeric powder",
+      "stockLevel": 800,
+      "location": "Delhi Warehouse C",
+      "category": "Spices",
+      "value": "₹40,000",
+      "supplier": "Spice Garden Co",
+      "lastUpdated": "2024-09-20"
+    },
+    {
+      "id": 4,
+      "name": "Laptop Batteries",
+      "description": "Li-ion batteries for various laptop models",
+      "stockLevel": 15,
+      "location": "Bangalore Warehouse D",
+      "category": "Electronics",
+      "value": "₹45,000",
+      "supplier": "BatteryTech Solutions",
+      "lastUpdated": "2024-09-19"
+    },
+    {
+      "id": 5,
+      "name": "Pharmaceutical Tablets",
+      "description": "Generic pharmaceutical products",
+      "stockLevel": 5000,
+      "location": "Hyderabad Warehouse E",
+      "category": "Pharmaceuticals",
+      "value": "₹5,00,000",
+      "supplier": "MediCorp India",
+      "lastUpdated": "2024-09-16"
+    },
+    {
+      "id": 6,
+      "name": "Basmati Rice",
+      "description": "Premium long-grain basmati rice",
+      "stockLevel": 30,
+      "location": "Punjab Warehouse F",
+      "category": "Agriculture",
+      "value": "₹90,000",
+      "supplier": "Golden Harvest",
+      "lastUpdated": "2024-09-17"
+    },
+    {
+      "id": 7,
+      "name": "Steel Components",
+      "description": "Precision-engineered steel parts",
+      "stockLevel": 2000,
+      "location": "Mumbai Warehouse A",
+      "category": "Manufacturing",
+      "value": "₹8,00,000",
+      "supplier": "Steel Industries Ltd",
+      "lastUpdated": "2024-09-14"
+    },
+    {
+      "id": 8,
+      "name": "Essential Oils",
+      "description": "Pure essential oils for aromatherapy",
+      "stockLevel": 35,
+      "location": "Kerala Warehouse G",
+      "category": "Healthcare",
+      "value": "₹1,20,000",
+      "supplier": "Nature's Essence",
+      "lastUpdated": "2024-09-21"
+    }
+  ]
+  

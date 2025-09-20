@@ -1,0 +1,99 @@
+[
+    {
+      "id": 1,
+      "name": "Sarah Johnson",
+      "email": "sarah.johnson@globaltech.com",
+      "phone": "+1-555-0123",
+      "company": "GlobalTech Inc.",
+      "country": "United States",
+      "totalOrders": 45,
+      "lastOrder": "2024-09-15",
+      "status": "Active",
+      "value": "$2,50,000"
+    },
+    {
+      "id": 2,
+      "name": "James Wilson",
+      "email": "j.wilson@britishimports.uk",
+      "phone": "+44-20-1234-5678",
+      "company": "British Imports Ltd.",
+      "country": "United Kingdom",
+      "totalOrders": 32,
+      "lastOrder": "2024-09-18",
+      "status": "Active",
+      "value": "$1,80,000"
+    },
+    {
+      "id": 3,
+      "name": "Emma Thompson",
+      "email": "emma@aussietrading.com.au",
+      "phone": "+61-2-9876-5432",
+      "company": "Aussie Trading Co.",
+      "country": "Australia",
+      "totalOrders": 28,
+      "lastOrder": "2024-08-30",
+      "status": "Active",
+      "value": "$1,20,000"
+    },
+    {
+      "id": 4,
+      "name": "Hans Mueller",
+      "email": "h.mueller@europeandist.de",
+      "phone": "+49-40-1234567",
+      "company": "European Distributors",
+      "country": "Germany",
+      "totalOrders": 52,
+      "lastOrder": "2024-09-20",
+      "status": "Active",
+      "value": "$3,20,000"
+    },
+    {
+      "id": 5,
+      "name": "Michael Chen",
+      "email": "m.chen@canadianimports.ca",
+      "phone": "+1-416-555-0198",
+      "company": "Canadian Imports",
+      "country": "Canada",
+      "totalOrders": 19,
+      "lastOrder": "2024-09-12",
+      "status": "Active",
+      "value": "$95,000"
+    },
+    {
+      "id": 6,
+      "name": "Ahmed Al-Rashid",
+      "email": "ahmed@metrading.ae",
+      "phone": "+971-4-123-4567",
+      "company": "Middle East Trading",
+      "country": "UAE",
+      "totalOrders": 38,
+      "lastOrder": "2024-09-19",
+      "status": "Active",
+      "value": "$2,10,000"
+    },
+    {
+      "id": 7,
+      "name": "Maria Rodriguez",
+      "email": "maria@latinimports.mx",
+      "phone": "+52-55-1234-5678",
+      "company": "Latin Imports SA",
+      "country": "Mexico",
+      "totalOrders": 15,
+      "lastOrder": "2024-09-05",
+      "status": "Inactive",
+      "value": "$68,000"
+    },
+    {
+      "id": 8,
+      "name": "Yuki Tanaka",
+      "email": "yuki@japantrading.jp",
+      "phone": "+81-3-1234-5678",
+      "company": "Japan Trading Corp",
+      "country": "Japan",
+      "totalOrders": 41,
+      "lastOrder": "2024-09-17",
+      "status": "Active",
+      "value": "$2,80,000"
+    }
+  ]
+  
