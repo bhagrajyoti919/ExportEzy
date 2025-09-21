@@ -289,7 +289,7 @@ const Inventory = () => {
             <Card key={item.id} className="hover:shadow-md transition-shadow duration-200">
               <CardContent className="p-6">
                 {/* Mobile Layout */}
-                <div className="lg:hidden space-y-4">
+                <div className=" space-y-4">
                   <div className="flex items-start justify-between">
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-gray-900 mb-1">{item.name}</h3>

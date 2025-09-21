@@ -154,7 +154,7 @@ const Shipments = () => {
               <Card key={shipment.id} className="hover:shadow-md transition-shadow duration-200">
                 <CardContent className="p-6">
                   {/* Mobile Layout */}
-                  <div className="lg:hidden space-y-4">
+                  <div className=" space-y-4">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center space-x-3">
                         <StatusIcon className={`w-5 h-5 text-${getStatusColor(shipment.status) === 'success' ? 'green' : getStatusColor(shipment.status) === 'warning' ? 'yellow' : getStatusColor(shipment.status) === 'primary' ? 'blue' : 'gray'}-600`} />
